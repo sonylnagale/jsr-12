@@ -25,8 +25,16 @@ var url =  https + newsSource + api;
 var ignURL = https + ign + api;
 console.log(url);
 console.log(ignURL);
-var req = new Request(url);
-fetch(req)
-    .then(function(response) {
-        console.log(response.json());
-    })
+
+$.ajax({
+  url: url,
+  method: 'GET',
+}).done(function(data) {
+  var articles = data.articles;
+  var title = data.articles[2].title;
+  console.log(data);
+  console.log(articles);
+  console.log(title);
+})
+
+//console.log(req);
