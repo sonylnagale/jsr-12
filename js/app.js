@@ -36,9 +36,12 @@ function mainNews() {
       console.log(data);
       console.log(data.articles);
       for (var i = 0; i < data.articles.length; i++) {
-        var h3 = JSON.stringify(data.articles[i].title);
-        var h6 = JSON.stringify(data.articles[i].source.name);
-        var context = {title: h3, body: h6};
+        var title = JSON.stringify(data.articles[i].description);
+        var source = JSON.stringify(data.articles[i].source.name);
+        var impression = JSON.stringify(data.articles[i].publishedAt);
+        //var link = JSON.stringify(data.articles[i].url);
+        //var image = JSON.stringify(data.articles[i].urlToImage);
+        var context = {title: title, body: source, impression: impression};
         var html = template(context);
         $('#main').append(html);
 
