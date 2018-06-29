@@ -26,15 +26,52 @@ var ignURL = https + ign + api;
 console.log(url);
 console.log(ignURL);
 
-$.ajax({
-  url: url,
-  method: 'GET',
-}).done(function(data) {
-  var articles = data.articles;
-  var title = data.articles[2].title;
-  console.log(data);
-  console.log(articles);
-  console.log(title);
-})
+function mainNews() {
+  var url = https + newsSource + api;
 
-//console.log(req);
+  $.ajax({
+    url: ignURL,
+    method: 'GET',
+    success: function(data) {
+      console.log(data);
+      console.log(data.articles);
+      for (var i = 0; i < data.articles.length; i++) {
+        var h3 = JSON.stringify(data.articles[i].title);
+        var h6 = JSON.stringify(data.articles[i].source.name);
+        var context = {title: h3, body: h6};
+        var html = template(context);
+        $('#main').append(html);
+
+        //$('.articleContent h3').text(JSON.stringify(data.articles[i].title));
+        //$('.articleContent a').text(JSON.stringify(data.articles[i].title));
+        // $('.articleContent h6').text(JSON.stringify(data.articles[i].source.name));
+        // $('.featuredImage img').src(JSON.stringify(data.articles[i].source.name));
+      }
+    }
+  })
+};
+
+mainNews();
+var source   = document.getElementById("entry").innerHTML;
+var template = Handlebars.compile(source);
+
+// $.ajax({
+//   url: url,
+//   method: 'GET',
+//   success: function(data) {
+//     var author = data.articles[0].author;
+//     $('.articleContent h6').text(JSON.stringify(author));
+//   },
+// }).done(function(data) {
+//   var articles = data.articles;
+//   var title = data.articles[2].title;
+//   var type = data.articles[4].source.id;
+//   var author = data.articles.author;
+//   console.log($(data));
+//   console.log(author);
+//   console.log(data);
+//   //console.log(articles);
+//   console.log(title);
+//   //console.log($(type));
+//   console.log(type);
+// });
