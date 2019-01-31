@@ -2,7 +2,7 @@
 
 ### Overview
 
-YO!
+YO!YO YO!!
 
 The web is an ever growing medium and it is getting more and more difficult to filter useful information. In our journey to writing beautiful JavaScript, we have come and will come across a great many reference points that will guide our learning. This is where personal feeds come in very useful. Online feeds are like to-do lists in that they can be infinitely personalized and there is not one solution that works for everybody.
 
